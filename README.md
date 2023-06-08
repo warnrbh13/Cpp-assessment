@@ -43,18 +43,30 @@ Implement a *customQueue* that supports *enqeue* and *deque* operations for both
 - *string getFront()*: Returns the front element of the queue as a string. 
     - If the front element is a ServerResponse then the output string should be formatted as <*messageId*> <*serverId*> <*metadata*>.
     - If the front element is a ClientRequest then the output string should be formatted as <*messageId*> <*clientId*> <*requestTime*>.
-Note that different words in *getFront()* are separated by a single space. It is guaranteed that all the queries are valid.
+    Note that different words in *getFront()* are separated by a single space. It is guaranteed that all the queries are valid.
+- *unsigned int getCountClients()*: Returns the number of distinct clientIds present on *queue*.
+- *unsigned int getCountServers()*: Returns the number of distinct serversIds present on *queue*.
+
 
 Example
 Consider the following 5 queries
 1. Enqueue a ClientRequest with *messageId* = "m1", *clientId* = "C1" and *requestTime* = 10
 2. Enqueue a ServerRequest with *messageId* = "m2", *serverId* = "S1" and *metadata* = "4bytes,1second"
-3. Get the front element.
-4. Pop.
+2. Enqueue a ClientRequest with *messageId* = "m3", *serverId* = "C1" and *metadata* = "5bytes,2second"
+3. Get count of clients
+4. Get count of servers.
 5. Get the front element.
- 
+6. Pop.
+7. Get the front element.
 
-The output for the third query is "m1 C1 10" and for the fifth query, "m2 S1 4bytes,1second".
+The output should look like:
+2 // Count of distinct current clients
+1 // Count of distinct current servers
+"m1 C1 10" // front of queue
+"m2 S1 4bytes,1second" // front of queue
+
+
+The output for the third query is "m1 C1 10" for the fifth query, "m2 S1 4bytes,1second".
 
 Constraints
 
