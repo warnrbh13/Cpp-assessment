@@ -60,13 +60,12 @@ Consider the following 5 queries
 7. Get the front element.
 
 The output should look like:
-2 // Count of distinct current clients
-1 // Count of distinct current servers
-"m1 C1 10" // front of queue
-"m2 S1 4bytes,1second" // front of queue
-
-
-The output for the third query is "m1 C1 10" for the fifth query, "m2 S1 4bytes,1second".
+```bash
+2                       // Count of distinct current clients
+1                       // Count of distinct current servers
+"m1 C1 10"              // front of queue
+"m2 S1 4bytes,1second"  // front of queue
+```
 
 Constraints
 
