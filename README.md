@@ -52,7 +52,7 @@ Example
 Consider the following 5 queries
 1. Enqueue a ClientRequest with *messageId* = "m1", *clientId* = "C1" and *requestTime* = 10
 2. Enqueue a ServerRequest with *messageId* = "m2", *serverId* = "S1" and *metadata* = "4bytes,1second"
-2. Enqueue a ClientRequest with *messageId* = "m3", *serverId* = "C1" and *metadata* = "5bytes,2second"
+2. Enqueue a ClientRequest with *messageId* = "m3", *clientId* = "C2" and *requestTime* = 15
 3. Get count of clients
 4. Get count of servers.
 5. Get the front element.
