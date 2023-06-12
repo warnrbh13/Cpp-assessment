@@ -47,6 +47,14 @@ Implement a *customQueue* that supports *enqeue* and *deque* operations for both
 - *unsigned int getCountClients()*: Returns the number of distinct clientIds present on *queue*.
 - *unsigned int getCountServers()*: Returns the number of distinct serversIds present on *queue*.
 
+We highly recommend showcasing the following in your solution:
+- Memory allocation (constructors & destructors)
+- Pointers
+- Arrays/Vectors (STL library)
+- STL Algorithms
+- Type conversion
+
+
 
 Example
 Consider the following 5 queries
