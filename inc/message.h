@@ -3,6 +3,7 @@
 
 class Message {
 public:
-    std::string messageId{};
-    Message(){}
+    std::string _message_id{};
+    Message();
+    Message(std::string message_id);
 };

@@ -4,7 +4,9 @@
 
 class ServerResponse : public Message{
 public:
-    std::string serverId{};
-    std::string metadata{};
-    ServerResponse(std::string messageId, std::string serverId, std::string metadata);
+    ServerResponse();
+    ServerResponse(std::string message_id, std::string server_id, std::string metadata);
+private:
+    std::string _server_id{};
+    std::string _metadata{};
 };
