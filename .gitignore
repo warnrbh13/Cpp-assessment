@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Compilation time Directories 
+build/
