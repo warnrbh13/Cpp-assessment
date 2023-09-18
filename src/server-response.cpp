@@ -22,6 +22,12 @@ ServerResponse::ServerResponse(std::string message_id, std::string server_id, st
     this->_metadata = metadata;
 }
 
-ServerResponse::~ServerResponse() {
+ServerResponse::~ServerResponse() {}
 
+std::string ServerResponse::getServerId() {
+    return _server_id;
+}
+
+std::string ServerResponse::getMetadata() {
+    return _server_id;
 }

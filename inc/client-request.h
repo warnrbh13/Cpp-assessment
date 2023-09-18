@@ -8,6 +8,10 @@ public:
     ClientRequest(std::string message_id, std::string client_id, int request_time);
     ~ClientRequest();
 
+    std::string getClientId();
+    int getRequestTime();
+    
+private:
     std::string _client_id;
     int _request_time;
 };

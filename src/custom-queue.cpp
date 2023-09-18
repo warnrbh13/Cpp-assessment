@@ -70,15 +70,15 @@ std::string CustomQueue::getFront()  {
     }
     if(_front->_node_type == SERVER) {
         ServerResponse* server_response = dynamic_cast<ServerResponse*>(_front->_data);
-        ans += server_response->_message_id + " " 
-             + server_response->_server_id + " "  
-             + server_response->_metadata;
+        ans += server_response->getMessageId() + " " 
+             + server_response->getServerId() + " "  
+             + server_response->getMetadata();
     }
     else {
         ClientRequest* client_request = dynamic_cast<ClientRequest*>(_front->_data);
-        ans += client_request->_message_id + " " 
-             + client_request->_client_id+ " "  
-             + std::to_string(client_request->_request_time);
+        ans += client_request->getMessageId() + " " 
+             + client_request->getClientId() + " "  
+             + std::to_string(client_request->getRequestTime());
     }
     return ans;
 }

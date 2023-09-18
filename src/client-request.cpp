@@ -23,3 +23,10 @@ ClientRequest::ClientRequest(std::string message_id, std::string client_id, int 
 ClientRequest::~ClientRequest() {
 }
 
+std::string ClientRequest::getClientId() {
+    return _client_id;
+}
+
+int ClientRequest::getRequestTime() {
+    return _request_time;
+}
