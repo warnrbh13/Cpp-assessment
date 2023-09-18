@@ -3,21 +3,20 @@
 #include "client-request.h"
 #include "server-response.h"
 
-union QueueElement {
-public:
-    ClientRequest _client_value;
-    ServerResponse _server_value;
-    QueueElement* next;
-    QueueElement(ClientRequest& client_request) {
-        _client_value = client_request;
-        _server_value = {};
-        next = nullptr;
-    }
-    QueueElement(ServerResponse& server_value) {
-        _client_value = {};
-        _server_value = server_value;
-        next = nullptr;
-    }
+enum NodeType {
+    CLIENT = 0,
+    SERVER
+};
+
+struct Node {
+    NodeType _node_type;
+    Message* _data;
+    Node* _next;
+    Node() : _data(nullptr), _next(nullptr) {}
+    Node(NodeType type, Message* data, Node* next)
+        :   _node_type(type),
+            _data(data),
+            _next(next) {}
 };
 
 class CustomQueue {
@@ -36,8 +35,8 @@ public:
 private:
     static const int MAX_SIZE{1000};
 
-    QueueElement* _front{};
-    QueueElement* _top{};
+    Node* _front{};
+    Node* _top{};
     size_t _queue_size{};
 
     unsigned int _clients_count{};
