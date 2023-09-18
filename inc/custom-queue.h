@@ -27,14 +27,13 @@ public:
     void enqueue(ClientRequest& client_request);
     void enqueue(ServerResponse& server_response);
 
-    void deque();
+    void dequeue();
     std::string getFront();
     unsigned int getCountClients();
     unsigned int getCountServers();
 
 private:
     static const int MAX_SIZE{1000};
-
     Node* _front{};
     Node* _top{};
     size_t _queue_size{};

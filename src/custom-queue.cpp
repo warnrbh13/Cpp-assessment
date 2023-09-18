@@ -47,7 +47,7 @@ void CustomQueue::enqueue(ServerResponse& server_response) {
     ++_queue_size;
 }
 
-void CustomQueue::deque() {
+void CustomQueue::dequeue() {
     if(_queue_size == size_t{}) {
         printf("[Error] Empty queue, nothing to dequeue\n");
         return;

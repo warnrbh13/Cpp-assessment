@@ -29,5 +29,5 @@ std::string ServerResponse::getServerId() {
 }
 
 std::string ServerResponse::getMetadata() {
-    return _server_id;
+    return _metadata;
 }
