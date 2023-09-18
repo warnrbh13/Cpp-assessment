@@ -13,7 +13,7 @@ CustomQueue::~CustomQueue() {
 }
 
 void CustomQueue::enqueue(ClientRequest& client_request) {
-    if(_clients_count + _servers_count > MAX_SIZE) {
+    if(_queue_size > MAX_SIZE) {
         printf("[Error] Max size reached\n");
         return;
     }
@@ -24,6 +24,7 @@ void CustomQueue::enqueue(ClientRequest& client_request) {
     }
     else {
         _top->_next = new_node;
+        _top = new_node;
     }
     ++_clients_count;
     ++_queue_size;
@@ -56,7 +57,7 @@ void CustomQueue::dequeue() {
         Node* tmp = _front;
         _front = _front->_next;
         if(tmp->_node_type == SERVER) --_servers_count;
-        else if(tmp->_node_type == CLIENT) --_clients_count;
+        else --_clients_count;
         delete tmp;
     }
     --_queue_size;
