@@ -1,5 +1,6 @@
 #include "custom-queue.h"
 #include <cstdio>
+#include <string>
 
 CustomQueue::CustomQueue() {}
 CustomQueue::~CustomQueue() {}
@@ -49,9 +50,34 @@ void CustomQueue::deque() {
     else {
         Node* tmp = _front;
         _front = _front->_next;
-        if(tmp->_node_type == CLIENT) --_clients_count;
-        else if(tmp->_node_type == SERVER) --_servers_count;
+        if(tmp->_node_type == SERVER) --_servers_count;
+        else if(tmp->_node_type == CLIENT) --_clients_count;
         delete tmp;
     }
     --_queue_size;
 }
+
+std::string CustomQueue::getFront()  {
+    std::string ans{};
+    if(_queue_size == size_t{}) {
+        printf("[Error] Empty queue, nothing to dequeue\n");
+        return {};
+    }
+    if(_front->_node_type == SERVER) {
+        ServerResponse* server_response = dynamic_cast<ServerResponse*>(_front->_data);
+        ans += server_response->_message_id + " " 
+             + server_response->_server_id + " "  
+             + server_response->_metadata;
+    }
+    else {
+        ClientRequest* client_request = dynamic_cast<ClientRequest*>(_front->_data);
+        ans += client_request->_message_id + " " 
+             + client_request->_client_id+ " "  
+             + std::to_string(client_request->_request_time);
+    }
+    return ans;
+}
+
+unsigned int CustomQueue::getCountClients() {return _clients_count;}
+
+unsigned int CustomQueue::getCountServers() {return _servers_count;}
