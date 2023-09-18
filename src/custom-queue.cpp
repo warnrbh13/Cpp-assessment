@@ -6,7 +6,6 @@ CustomQueue::CustomQueue() {}
 CustomQueue::~CustomQueue() {}
 
 void CustomQueue::enqueue(ClientRequest& client_request) {
-    printf("[%s]", __func__);
     if(_clients_count + _servers_count > MAX_SIZE) {
         printf("[Error] Max size reached\n");
         return;
@@ -24,7 +23,6 @@ void CustomQueue::enqueue(ClientRequest& client_request) {
 }
 
 void CustomQueue::enqueue(ServerResponse& server_response) {
-    printf("[%s]", __func__);
     if(_clients_count + _servers_count > MAX_SIZE) {
         printf("[Error] Max size reached\n");
         return;
@@ -36,13 +34,13 @@ void CustomQueue::enqueue(ServerResponse& server_response) {
     }
     else {
         _top->_next = new_node;
+        _top = new_node;
     }
     ++_servers_count;
     ++_queue_size;
 }
 
 void CustomQueue::deque() {
-    printf("[%s]", __func__);
     if(_queue_size == size_t{}) {
         printf("[Error] Empty queue, nothing to dequeue\n");
         return;
@@ -79,5 +77,4 @@ std::string CustomQueue::getFront()  {
 }
 
 unsigned int CustomQueue::getCountClients() {return _clients_count;}
-
 unsigned int CustomQueue::getCountServers() {return _servers_count;}
