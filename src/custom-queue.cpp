@@ -3,7 +3,14 @@
 #include <string>
 
 CustomQueue::CustomQueue() {}
-CustomQueue::~CustomQueue() {}
+CustomQueue::~CustomQueue() {
+    Node* node = _front;
+    while(node) {
+        Node* prev = node;
+        node = node->_next;
+        delete prev;
+    }
+}
 
 void CustomQueue::enqueue(ClientRequest& client_request) {
     if(_clients_count + _servers_count > MAX_SIZE) {
