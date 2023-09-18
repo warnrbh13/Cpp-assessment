@@ -7,6 +7,8 @@ public:
     ServerResponse();
     ServerResponse(std::string message_id, std::string server_id, std::string metadata);
     ~ServerResponse();
+    
     std::string _server_id{};
     std::string _metadata{};
+
 };

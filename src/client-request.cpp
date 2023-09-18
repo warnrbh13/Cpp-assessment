@@ -8,10 +8,16 @@ ClientRequest::ClientRequest()
         _request_time(int{}) {
 }
 
-ClientRequest::ClientRequest(std::string message_id, std::string client_id, int request_time) 
-    :   Message(message_id),
-        _client_id(client_id), 
-        _request_time(request_time) {
+ClientRequest::ClientRequest(std::string message_id, std::string client_id, int request_time) {
+    if(message_id.length() > MAX_STR_SIZE or client_id.length() > MAX_STR_SIZE) {
+        throw std::invalid_argument("Invalid argument size\n");
+    }
+    if(request_time < MIN_INT_VAL or request_time >  MAX_INT_VAL) {
+        throw std::invalid_argument("Invalid argument value\n");
+    }
+    this->_message_id = message_id;
+    this->_client_id = client_id;
+    this->_request_time = request_time;
 }
 
 ClientRequest::~ClientRequest() {
